@@ -1,0 +1,27 @@
+* text=auto
+
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.gitkeep text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.svg text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.asc text eol=lf
+COPYING text eol=lf
+*.deb binary
+*.elf binary
+*.bin binary
+*.gz binary
+*.gpg binary
+*.ico binary
+*.png binary
+public/CNAME text eol=lf
+public/deb/InRelease text eol=lf
+public/deb/Packages text eol=lf
+public/deb/Release text eol=lf

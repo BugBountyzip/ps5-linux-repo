@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS5 Linux Package Repository</title>
+    <meta name="description" content="APT package repository for PS5 Linux kernel updates.">
+    <meta name="theme-color" content="#006fcd">
+    <link rel="canonical" href="https://ps5linux.bugbounty.zip/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PS5 Linux Repo">
+    <meta property="og:title" content="PS5 Linux Package Repository">
+    <meta property="og:description" content="Signed apt package repository for PS5 Linux kernel updates.">
+    <meta property="og:url" content="https://ps5linux.bugbounty.zip/">
+    <meta property="og:image" content="https://ps5linux.bugbounty.zip/assets/img/social-card.png">
+    <meta property="og:image:secure_url" content="https://ps5linux.bugbounty.zip/assets/img/social-card.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PS5 Linux Package Repository">
+    <meta name="twitter:description" content="Signed apt package repository for PS5 Linux kernel updates.">
+    <meta name="twitter:image" content="https://ps5linux.bugbounty.zip/assets/img/social-card.png">
+    <link rel="icon" href="./assets/img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="./assets/img/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="./assets/css/main.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#install">Skip to install</a>
+
+    <div class="topbar">
+      <span>Independent PS5 Linux infrastructure</span>
+    </div>
+
+    <header class="masthead" id="masthead">
+      <div class="masthead__inner">
+        <a class="brand" href="#" aria-label="PS5 Linux repository home">
+          <span class="mark" aria-hidden="true">
+            <img src="./assets/img/ps5-linux-logo.png" alt="">
+          </span>
+          <span>PS5 Linux Repo</span>
+        </a>
+        <nav class="masthead__nav" aria-label="Primary">
+          <a href="#install">Install</a>
+        </nav>
+        <div class="masthead__actions">
+          <a class="icon-btn icon-btn--circle" href="https://discord.gg/JQ6C9v6k" aria-label="Join Discord">
+            <img class="btn-icon" src="./assets/icons/discord.svg" alt="">
+          </a>
+          <a class="btn btn--light" href="https://github.com/BugBountyzip/ps5-linux-repo">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="subnav">
+      <div class="subnav__inner">
+        <ul class="subnav__links">
+          <li><a class="active" href="#install">Install</a></li>
+        </ul>
+        <a class="btn btn--cta subnav__cta" href="./deb/">Browse repo</a>
+      </div>
+    </div>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__gradient" aria-hidden="true"></div>
+        <div class="container hero__content">
+          <div class="buybox reveal">
+            <p class="eyebrow">PS5 Linux kernel updates</p>
+            <h1 class="buybox__title">Update PS5 Linux through apt.</h1>
+            <p class="buybox__dev">APT package repository for linux-ps5 updates.</p>
+            <p class="buybox__avail">
+              <span class="muted">Designed for</span>
+              <b>Ubuntu</b>
+              <span class="dot">.</span>
+              <b>Kali</b>
+              <span class="dot">.</span>
+              <b>REMnux</b>
+              <span class="dot">.</span>
+              <b>Parrot</b>
+            </p>
+
+            <div class="price-row">
+              <span class="price">APT-ready</span>
+              <div class="price-row__btns">
+                <a href="#install" class="btn btn--cta">Install repo</a>
+                <a href="./deb/" class="icon-btn icon-btn--circle" aria-label="Browse repository">&gt;</a>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li><i class="ico"></i> Install once, then update with normal apt commands.</li>
+              <li><i class="ico"></i> Works with apt-based PS5 Linux installs.</li>
+              <li><i class="ico"></i> Signed metadata is required before apt installs updates.</li>
+            </ul>
+          </div>
+
+          <div class="terminal reveal" aria-label="Install command preview">
+            <div class="terminal-bar">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <pre>$ curl -fsSL https://ps5linux.bugbounty.zip/install.sh | sudo bash
+$ sudo apt update
+$ sudo apt install --reinstall linux-ps5</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="access reveal" id="install">
+        <div class="container access__grid">
+          <div class="access__text">
+            <p class="eyebrow">Install</p>
+            <h2>One command adds the repo.</h2>
+            <p>The installer adds the PS5 Linux package source and its public archive key, then apt can find linux-ps5 updates.</p>
+            <div class="copy-row">
+              <code id="install-command">curl -fsSL https://ps5linux.bugbounty.zip/install.sh | sudo bash</code>
+              <button type="button" data-copy="#install-command">Copy</button>
+            </div>
+          </div>
+          <div class="status-panel">
+            <span class="pill" data-repo-status>Checking repository</span>
+            <h3>Repository status</h3>
+            <p>When the signed metadata and public archive key are published, this page will show the repo as online.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__logo">PS5 Linux Repo</div>
+          <span>Static package hosting for Linux on PS5.</span>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h6>Repository</h6>
+            <ul>
+              <li><a href="./deb/">Debian packages</a></li>
+              <li><a href="./keys/">Public keys</a></li>
+              <li><a href="./install.sh">Install script</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h6>Project</h6>
+            <ul>
+              <li><a href="https://github.com/ps5-linux/ps5-linux-image">Images</a></li>
+              <li><a href="https://github.com/BugBountyzip/ps5-linux-repo">This repo</a></li>
+              <li><a class="footer-icon-link" href="https://discord.gg/JQ6C9v6k"><img src="./assets/icons/discord.svg" alt=""> Discord server</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h6>Credits</h6>
+            <ul>
+              <li><a href="https://github.com/ps5-linux">ps5-linux / TheFlow</a></li>
+              <li><a href="https://github.com/ps5-linux/ps5-linux-patches">ps5-linux-patches</a></li>
+              <li><a href="https://github.com/ps5-linux/ps5-linux-image">ps5-linux-image</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__legal">
+          <p>Independent PS5 Linux infrastructure. Not affiliated with Sony Interactive Entertainment. No PlayStation trademarks, logos, or assets are used by this page.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./assets/js/main.js"></script>
+  </body>
+</html>

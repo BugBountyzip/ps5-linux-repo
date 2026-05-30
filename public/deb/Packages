@@ -1,0 +1,13 @@
+Package: linux-ps5
+Version: 7.0.10
+Architecture: amd64
+Maintainer: PS5 Linux
+Conflicts: linux-image-7.0.10, linux-headers-7.0.10, linux-libc-dev
+Replaces: linux-image-7.0.10, linux-headers-7.0.10, linux-libc-dev
+Provides: linux-image-7.0.10, linux-headers-7.0.10, linux-libc-dev
+Filename: ./linux-ps5_7.0.10_amd64.deb
+Size: 47368648
+MD5sum: 4f24245921d6cd226a7fb99fad7b3b83
+SHA1: c5ae775d54ee6848a16233cee1737b458740c999
+SHA256: 10ad90d8df5d5934a6aac8fe4518afa5dd8cbea748a03916f2f259cd2f827562
+Description: PS5 Linux kernel 7.0.10 (image + modules + headers + libc-dev)

@@ -1,0 +1,11 @@
+.env
+.gnupg/
+*.tmp
+*.log
+*.swp
+
+# The Pages workflow copies package binaries from packages/deb/ into public/deb/.
+public/deb/*.deb
+
+# Keep package binaries explicit: add .deb files intentionally.
+!packages/deb/.gitkeep

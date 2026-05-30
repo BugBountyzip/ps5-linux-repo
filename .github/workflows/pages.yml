@@ -1,0 +1,79 @@
+name: Publish package repository
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/deb/**"
+      - "public/**"
+      - "scripts/**"
+      - ".github/workflows/pages.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install repository tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev apt-utils gnupg gzip
+
+      - name: Import apt signing key
+        env:
+          APT_SIGNING_KEY: ${{ secrets.APT_SIGNING_KEY }}
+          APT_SIGNING_KEY_PASSPHRASE: ${{ secrets.APT_SIGNING_KEY_PASSPHRASE }}
+        run: |
+          if [ -z "${APT_SIGNING_KEY:-}" ]; then
+            echo "APT_SIGNING_KEY is not configured; publishing unsigned metadata."
+            exit 0
+          fi
+          install -m 700 -d ~/.gnupg
+          printf '%s\n' "$APT_SIGNING_KEY" | gpg --batch --import
+          if [ -n "${APT_SIGNING_KEY_PASSPHRASE:-}" ]; then
+            echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+            gpgconf --kill gpg-agent
+          fi
+
+      - name: Build apt repository metadata
+        env:
+          APT_SIGNING_KEY: ${{ secrets.APT_SIGNING_KEY }}
+          APT_SIGNING_KEY_FPR: ${{ secrets.APT_SIGNING_KEY_FPR }}
+          APT_SIGNING_KEY_PASSPHRASE: ${{ secrets.APT_SIGNING_KEY_PASSPHRASE }}
+        run: |
+          if [ -z "${APT_SIGNING_KEY:-}" ] && [ -f public/deb/InRelease ]; then
+            echo "Preserving committed signed metadata."
+            mkdir -p public/deb
+            cp -f packages/deb/*.deb public/deb/
+          else
+            bash ./scripts/build-deb-repo.sh
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
